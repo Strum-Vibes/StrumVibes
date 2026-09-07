@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About — StrumVibes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       ROOT
+       ========================================================= */
+
+    :root {
+      --black: #030707;
+      --black-soft: #07100f;
+
+      --teal: #0c514e;
+      --teal-dark: #062d2c;
+      --teal-light: #0e625e;
+
+      --gold: #d3a657;
+      --gold-light: #e7c477;
+      --gold-dark: #a8792f;
+
+      --white: #f5f1e8;
+      --white-soft: #d8d6ce;
+
+      --muted: #969e9a;
+
+      --border: rgba(211, 166, 87, 0.30);
+
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #101212;
+      color: var(--white);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       MAIN WEBSITE FRAME
+       ========================================================= */
+
+    .website {
+      width: min(1460px, calc(100% - 60px));
+      margin: 30px auto;
+
+      background:
+        radial-gradient(
+          circle at 50% 25%,
+          rgba(10, 69, 66, 0.17),
+          transparent 38%
+        ),
+        var(--black);
+
+      border: 1px solid var(--border);
+      border-radius: 25px;
+
+      overflow: hidden;
+      position: relative;
+
+      box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.45);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    header {
+      height: 105px;
+
+      padding: 0 55px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      position: relative;
+      z-index: 100;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      width: 60px;
+      height: 60px;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+    }
+
+    .logo-text strong {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text strong span {
+      color: var(--gold);
+    }
+
+    .logo-text small {
+      display: block;
+
+      margin-top: -2px;
+
+      color: #168a84;
+
+      font-size: 9px;
+      font-weight: 600;
+
+      letter-spacing: 3.4px;
+    }
+
+
+    /* NAV */
+
+    .navigation {
+      display: flex;
+      align-items: center;
+
+      gap: 45px;
+    }
+
+    .navigation a {
+      position: relative;
+
+      color: #dedbd3;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      transition:
+        color 0.25s ease;
+    }
+
+    .navigation a:hover {
+      color: var(--gold-light);
+    }
+
+    .navigation a.active {
+      color: var(--gold-light);
+    }
+
+    .navigation a.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: -15px;
+
+      height: 2px;
+
+      background: var(--gold);
+    }
+
+
+    /* =========================================================
+       COMMON
+       ========================================================= */
+
+    .section-eyebrow {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 3.2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+
+      font-size: clamp(48px, 5vw, 76px);
+
+      line-height: 0.98;
+
+      font-weight: 400;
+
+      letter-spacing: -2.5px;
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .section-description {
+      color: #aeb5b1;
+
+      font-size: 14px;
+
+      line-height: 1.85;
+
+      max-width: 580px;
+    }
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       SAME VALUES AS HOMEPAGE
+       ========================================================= */
+
+    .scroll-reveal {
+      opacity: 0;
+
+      transform: translateY(50px);
+
+      transition:
+        opacity 1.8s cubic-bezier(.2,.8,.2,1),
+        transform 1.8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .scroll-reveal.reveal {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .about-hero {
+      min-height: 680px;
+
+      padding: 65px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 0.9fr;
+
+      align-items: center;
+
+      gap: 80px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-bottom:
+        1px solid rgba(211, 166, 87, 0.18);
+    }
+
+
+    /* BACKGROUND WORD */
+
+    .about-hero::before {
+      content: "STRUMVIBES";
+
+      position: absolute;
+
+      left: -1px;
+      bottom: -30px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(130px, 15vw, 220px);
+
+      line-height: 1;
+
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px rgba(211, 166, 87, 0.075);
+
+      white-space: nowrap;
+
+      pointer-events: none;
+    }
+
+
+    /* HERO TEXT */
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+
+      max-width: 680px;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+
+      font-size: clamp(65px, 7vw, 105px);
+
+      line-height: 0.91;
+
+      font-weight: 400;
+
+      letter-spacing: -4px;
+    }
+
+    .hero-title span {
+      display: block;
+
+      color: var(--gold);
+    }
+
+    .hero-description {
+      margin-top: 32px;
+
+      color: #aeb5b1;
+
+      max-width: 530px;
+
+      font-size: 15px;
+
+      line-height: 1.9;
+    }
+
+    .hero-line {
+      width: 85px;
+
+      height: 1px;
+
+      margin-top: 34px;
+
+      background: var(--gold);
+    }
+
+
+    /* HERO IMAGE */
+
+    .hero-visual-wrap {
+      position: relative;
+
+      width: min(460px, 100%);
+
+      justify-self: end;
+    }
+
+    .hero-visual {
+      width: 100%;
+
+      aspect-ratio: 0.82;
+
+      border-radius:
+        240px 240px 24px 24px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(211, 166, 87, 0.55);
+
+      position: relative;
+
+      background: var(--teal-dark);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(0.55)
+        brightness(0.58)
+        contrast(1.1);
+    }
+
+    .hero-visual::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(6, 45, 44, 0.08),
+          rgba(3, 7, 7, 0.58)
+        );
+    }
+
+
+    /* YEAR BADGE */
+
+    .hero-year {
+      position: absolute;
+
+      right: -28px;
+      bottom: 45px;
+
+      width: 125px;
+      height: 125px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background: #050a0a;
+
+      border:
+        1px solid rgba(211, 166, 87, 0.55);
+
+      color: var(--gold-light);
+
+      font-family: var(--serif);
+
+      font-size: 28px;
+
+      line-height: 1.1;
+
+      z-index: 5;
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,0.35);
+    }
+
+    .hero-year small {
+      display: block;
+
+      font-family: var(--sans);
+
+      font-size: 8px;
+
+      letter-spacing: 2px;
+
+      color: #8f9894;
+
+      margin-top: 4px;
+    }
+
+
+    /* =========================================================
+       SECTION 02 — BEGINNING
+       ========================================================= */
+
+    .beginning-section {
+      min-height: 680px;
+
+      padding: 125px 65px;
+
+      display: grid;
+
+      grid-template-columns: 0.42fr 1.25fr;
+
+      gap: 90px;
+
+      position: relative;
+
+      border-bottom:
+        1px solid rgba(211, 166, 87, 0.18);
+    }
+
+
+    /* TIMELINE */
+
+    .timeline-year {
+      position: relative;
+
+      padding-top: 5px;
+    }
+
+    .timeline-year::after {
+      content: "";
+
+      position: absolute;
+
+      left: 6px;
+
+      top: 75px;
+
+      width: 1px;
+
+      height: 390px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          var(--gold),
+          rgba(211,166,87,0.05)
+        );
+    }
+
+    .year-number {
+      font-family: var(--serif);
+
+      font-size: 105px;
+
+      line-height: 0.8;
+
+      color: var(--gold);
+    }
+
+    .year-caption {
+      margin-top: 25px;
+      margin-left: 25px;
+
+      color: #777f7b;
+
+      font-size: 10px;
+
+      letter-spacing: 2.5px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* BEGINNING CONTENT */
+
+    .beginning-content {
+      max-width: 750px;
+    }
+
+    .beginning-content .section-title {
+      max-width: 700px;
+    }
+
+    .beginning-content .section-description {
+      margin-top: 30px;
+    }
+
+    .beginning-content .section-description + .section-description {
+      margin-top: 18px;
+    }
+
+
+    /* MINI STATS */
+
+    .beginning-stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(140px, 190px));
+
+      gap: 15px;
+
+      margin-top: 48px;
+    }
+
+    .stat {
+      padding: 20px 20px;
+
+      border:
+        1px solid rgba(211,166,87,0.20);
+
+      border-radius: 16px;
+
+      background:
+        rgba(8, 27, 26, 0.55);
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--gold);
+
+      font-family: var(--serif);
+
+      font-size: 30px;
+
+      font-weight: 400;
+    }
+
+    .stat span {
+      display: block;
+
+      color: #858e8a;
+
+      font-size: 9px;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+
+      margin-top: 5px;
+    }
+
+
+    /* =========================================================
+       SECTION 03 — THE GAP
+       ========================================================= */
+
+    .gap-section {
+      min-height: 700px;
+
+      padding: 135px 65px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 70% 50%,
+          rgba(12,81,78,0.20),
+          transparent 40%
+        );
+
+      border-bottom:
+        1px solid rgba(211,166,87,0.18);
+    }
+
+    .gap-top {
+      max-width: 850px;
+    }
+
+    .gap-title {
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 6vw, 88px);
+
+      line-height: 0.95;
+
+      letter-spacing: -3px;
+
+      font-weight: 400;
+
+      margin-top: 5px;
+    }
+
+    .gap-title span {
+      color: var(--gold);
+    }
+
+    .gap-description {
+      margin-top: 30px;
+
+      max-width: 610px;
+
+      color: #aeb5b1;
+
+      font-size: 14px;
+
+      line-height: 1.85;
+    }
+
+
+    /* CONFUSION PATH */
+
+    .confusion-path {
+      margin-top: 85px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+    }
+
+    .path-item {
+      padding: 15px 22px;
+
+      border:
+        1px solid rgba(211,166,87,0.24);
+
+      border-radius: 50px;
+
+      color: #b9bfbc;
+
+      font-size: 11px;
+
+      letter-spacing: 0.5px;
+
+      background:
+        rgba(4,12,12,0.72);
+    }
+
+    .path-arrow {
+      color: var(--gold);
+
+      font-size: 18px;
+    }
+
+    .gap-bottom {
+      max-width: 620px;
+
+      margin:
+        65px auto 0;
+
+      text-align: center;
+
+      color: #777f7b;
+
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SECTION 04 — REALISATION
+       ========================================================= */
+
+    .realisation-section {
+      min-height: 600px;
+
+      padding: 130px 65px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-bottom:
+        1px solid rgba(211,166,87,0.18);
+    }
+
+    .realisation-section::before {
+      content: "REALISE";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -80px;
+
+      transform: translateX(-50%);
+
+      font-family: var(--serif);
+
+      font-size: 210px;
+
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px rgba(211,166,87,0.07);
+
+      white-space: nowrap;
+    }
+
+    .realisation-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 920px;
+    }
+
+    .realisation-quote {
+      margin-top: 20px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(50px, 6vw, 82px);
+
+      line-height: 0.98;
+
+      letter-spacing: -3px;
+    }
+
+    .realisation-quote span {
+      color: var(--gold);
+    }
+
+    .realisation-description {
+      max-width: 650px;
+
+      margin: 35px auto 0;
+
+      color: #aeb5b1;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .realisation-line {
+      width: 70px;
+
+      height: 1px;
+
+      margin: 35px auto 0;
+
+      background: var(--gold);
+    }
+
+
+    /* =========================================================
+       SECTION 05 — 2025 / STRUMVIBES
+       ========================================================= */
+
+    .strumvibes-section {
+      min-height: 720px;
+
+      padding: 125px 65px;
+
+      position: relative;
+
+      border-bottom:
+        1px solid rgba(211,166,87,0.18);
+    }
+
+    .strumvibes-heading {
+      max-width: 900px;
+    }
+
+    .strumvibes-heading .section-title {
+      font-size: clamp(55px, 6vw, 86px);
+    }
+
+    .strumvibes-heading .section-description {
+      margin-top: 28px;
+    }
+
+
+    /* JOURNEY FLOW */
+
+    .journey-flow {
+      margin-top: 90px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      align-items: center;
+
+      gap: 0;
+    }
+
+    .journey-step {
+      position: relative;
+
+      min-height: 165px;
+
+      padding: 25px 25px 25px 0;
+    }
+
+    .journey-step:not(:last-child)::after {
+      content: "→";
+
+      position: absolute;
+
+      right: 18px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: var(--gold);
+
+      font-size: 20px;
+    }
+
+    .journey-number {
+      color: var(--gold);
+
+      font-family: var(--serif);
+
+      font-size: 27px;
+    }
+
+    .journey-step h3 {
+      font-family: var(--serif);
+
+      font-size: 25px;
+
+      font-weight: 400;
+
+      margin-top: 20px;
+    }
+
+    .journey-step p {
+      color: #7f8884;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      max-width: 190px;
+
+      margin-top: 8px;
+    }
+
+
+    /* =========================================================
+       SECTION 06 — PURPOSE
+       ========================================================= */
+
+    .purpose-section {
+      min-height: 650px;
+
+      padding: 135px 65px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(12,81,78,0.23),
+          transparent 47%
+        );
+
+      border-bottom:
+        1px solid rgba(211,166,87,0.18);
+    }
+
+    .purpose-content {
+      max-width: 900px;
+    }
+
+    .purpose-title {
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 6vw, 88px);
+
+      line-height: 0.96;
+
+      letter-spacing: -3px;
+
+      font-weight: 400;
+
+      margin-top: 15px;
+    }
+
+    .purpose-title span {
+      color: var(--gold);
+    }
+
+    .purpose-description {
+      max-width: 650px;
+
+      margin: 35px auto 0;
+
+      color: #aeb5b1;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .purpose-signature {
+      margin-top: 42px;
+
+      font-family: var(--serif);
+
+      font-size: 31px;
+
+      color: var(--gold-light);
+    }
+
+
+    /* =========================================================
+       FINAL CTA
+       ========================================================= */
+
+    .about-cta {
+      min-height: 500px;
+
+      padding: 115px 65px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #061514,
+          #030707 65%
+        );
+    }
+
+    .about-cta::before {
+      content: "PLAY";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -80px;
+
+      transform: translateX(-50%);
+
+      font-family: var(--serif);
+
+      font-size: 230px;
+
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px rgba(211,166,87,0.075);
+
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 760px;
+    }
+
+    .cta-title {
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 6vw, 82px);
+
+      line-height: 0.95;
+
+      letter-spacing: -3px;
+
+      font-weight: 400;
+    }
+
+    .cta-title span {
+      color: var(--gold);
+    }
+
+    .cta-description {
+      max-width: 560px;
+
+      margin: 28px auto 0;
+
+      color: #9fa8a4;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+
+    /* CTA BUTTON */
+
+    .cta-button {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 18px;
+
+      margin-top: 34px;
+
+      padding: 15px 25px;
+
+      border-radius: 50px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #edc274,
+          #c99642
+        );
+
+      color: #17130b;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .cta-button span {
+      font-size: 17px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 35px rgba(211,166,87,0.20);
+    }
+
+
+    /* =========================================================
+       FOOTER DETAIL
+       ========================================================= */
+
+    .bottom-detail {
+      height: 1px;
+
+      margin: 0 32px;
+
+      background:
+        rgba(211,166,87,0.25);
+
+      position: relative;
+    }
+
+    .bottom-detail::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: -10px;
+
+      transform: translateX(-50%);
+
+      width: 22px;
+      height: 22px;
+
+      background: var(--gold);
+
+      clip-path:
+        polygon(
+          50% 0,
+          100% 38%,
+          75% 85%,
+          50% 100%,
+          25% 85%,
+          0 38%
+        );
+    }
+
+    footer {
+      height: 80px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #666f6b;
+
+      font-size: 10px;
+
+      letter-spacing: 1.5px;
+    }
+
+
+    /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .website {
+        width: calc(100% - 30px);
+      }
+
+      header {
+        padding: 0 35px;
+      }
+
+      .about-hero {
+        grid-template-columns: 1fr;
+
+        gap: 70px;
+
+        padding: 80px 45px 100px;
+      }
+
+      .hero-visual-wrap {
+        justify-self: center;
+
+        width: 380px;
+      }
+
+      .beginning-section {
+        grid-template-columns: 0.3fr 1fr;
+
+        gap: 60px;
+
+        padding: 100px 45px;
+      }
+
+      .gap-section,
+      .realisation-section,
+      .strumvibes-section,
+      .purpose-section,
+      .about-cta {
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+
+      .journey-flow {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        row-gap: 30px;
+      }
+
+      .journey-step:nth-child(2)::after {
+        display: none;
+      }
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 760px) {
+
+      .website {
+        width: calc(100% - 18px);
+
+        margin: 9px auto;
+
+        border-radius: 18px;
+      }
+
+
+      /* NAV */
+
+      header {
+        height: auto;
+
+        padding: 23px 20px 18px;
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+      }
+
+      .logo img {
+        width: 52px;
+        height: 52px;
+      }
+
+      .logo-text strong {
+        font-size: 24px;
+      }
+
+      .navigation {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 28px;
+
+        order: 3;
+      }
+
+      .navigation a {
+        font-size: 12px;
+      }
+
+
+      /* HERO */
+
+      .about-hero {
+        min-height: auto;
+
+        padding: 75px 20px 95px;
+
+        gap: 60px;
+      }
+
+      .about-hero::before {
+        font-size: 76px;
+
+        bottom: -10px;
+
+        left: 
+        5px;
+      }
+
+      .hero-title {
+        font-size: 58px;
+
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-visual-wrap {
+        width: 285px;
+
+        margin: auto;
+      }
+
+      .hero-year {
+        width: 90px;
+        height: 90px;
+
+        right: -18px;
+        bottom: 25px;
+
+        font-size: 21px;
+      }
+
+
+      /* BEGINNING */
+
+      .beginning-section {
+        min-height: auto;
+
+        padding: 85px 20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .timeline-year::after {
+        display: none;
+      }
+
+      .year-number {
+        font-size: 80px;
+      }
+
+      .beginning-content .section-title {
+        font-size: 49px;
+      }
+
+      .beginning-stats {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        margin-top: 38px;
+      }
+
+
+      /* GAP */
+
+      .gap-section {
+        min-height: auto;
+
+        padding: 90px 20px 100px;
+      }
+
+      .gap-title {
+        font-size: 51px;
+
+        letter-spacing: -2px;
+      }
+
+      .gap-description {
+        font-size: 13px;
+      }
+
+      .confusion-path {
+        margin-top: 60px;
+
+        flex-direction: column;
+      }
+
+      .path-arrow {
+        transform: rotate(90deg);
+      }
+
+      .gap-bottom {
+        margin-top: 50px;
+      }
+
+
+      /* REALISATION */
+
+      .realisation-section {
+        min-height: 520px;
+
+        padding: 90px 20px;
+      }
+
+      .realisation-section::before {
+        font-size: 100px;
+
+        bottom: -30px;
+      }
+
+      .realisation-quote {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+      }
+
+      .realisation-description {
+        font-size: 13px;
+      }
+
+
+      /* STRUMVIBES */
+
+      .strumvibes-section {
+        min-height: auto;
+
+        padding: 90px 20px;
+      }
+
+      .strumvibes-heading .section-title {
+        font-size: 50px;
+      }
+
+      .journey-flow {
+        margin-top: 65px;
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+      }
+
+      .journey-step {
+        min-height: 145px;
+
+        padding-left: 0;
+
+        border-left:
+          1px solid rgba(211,166,87,0.24);
+
+        padding-left: 25px;
+      }
+
+      .journey-step:not(:last-child)::after {
+        content: "↓";
+
+        right: auto;
+
+        left: -8px;
+
+        top: auto;
+
+        bottom: -8px;
+
+        transform: none;
+
+        background: var(--black);
+
+        padding: 2px;
+
+        font-size: 15px;
+      }
+
+
+      /* PURPOSE */
+
+      .purpose-section {
+        min-height: 540px;
+
+        padding: 90px 20px;
+      }
+
+      .purpose-title {
+        font-size: 49px;
+
+        letter-spacing: -2px;
+      }
+
+      .purpose-description {
+        font-size: 13px;
+      }
+
+      .purpose-signature {
+        font-size: 25px;
+      }
+
+
+      /* CTA */
+
+      .about-cta {
+        min-height: 450px;
+
+        padding: 85px 20px;
+      }
+
+      .about-cta::before {
+        font-size: 125px;
+
+        bottom: -40px;
+      }
+
+      .cta-title {
+        font-size: 50px;
+
+        letter-spacing: -2px;
+      }
+
+
+      footer {
+        height: 65px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .scroll-reveal {
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="website">
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <header>
+
+      <a href="index.html" class="logo">
+
+        <img
+          src="images/logo2.png"
+          alt="StrumVibes logo"
+        >
+
+        <div class="logo-text">
+
+          <strong>
+            Strum<span>Vibes</span>
+          </strong>
+
+          <small>
+            GUITAR CLASSES
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <nav class="navigation">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html" class="active">
+          About
+        </a>
+
+        <a href="courses.html">
+          Courses
+        </a>
+        
+        <a href="privacy.html">
+          Privacy Policy
+        </a>
+
+      </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         SECTION 01
+         HERO
+         ===================================================== -->
+
+    <section class="about-hero">
+
+
+      <div class="hero-content scroll-reveal">
+
+        <div class="section-eyebrow">
+          THE STORY BEHIND STRUMVIBES
+        </div>
+
+
+        <h1 class="hero-title">
+
+          It Started
+          <span>With A Guitar.</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          What started as a personal journey to learn guitar
+          eventually became a vision to make that journey
+          easier, clearer, and more enjoyable for others.
+
+        </p>
+
+
+        <div class="hero-line"></div>
+
+      </div>
+
+
+
+      <div class="hero-visual-wrap scroll-reveal">
+
+        <div class="hero-visual">
+
+          <img
+            src="images/image3.jpeg"
+            alt="Guitar at StrumVibes"
+          >
+
+        </div>
+
+
+        <div class="hero-year">
+
+          2021
+
+          <small>
+            THE BEGINNING
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 02
+         THE BEGINNING
+         ===================================================== -->
+
+    <section class="beginning-section">
+
+
+      <div class="timeline-year scroll-reveal">
+
+        <div class="year-number">
+          2021
+        </div>
+
+        <div class="year-caption">
+          Where It Began
+        </div>
+
+      </div>
+
+
+
+      <div class="beginning-content scroll-reveal">
+
+        <div class="section-eyebrow">
+          THE BEGINNING
+        </div>
+
+
+        <h2 class="section-title">
+
+          I Started
+          <span>Learning.</span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+          In 2021, I finally decided to learn guitar.
+          I started taking classes with one simple motivation —
+          I genuinely wanted to learn, play, and understand
+          the instrument.
+
+        </p>
+
+
+        <p class="section-description">
+
+          The beginning wasn't always easy. My fingers hurt,
+          progress sometimes felt slow, and there were moments
+          when I felt discouraged. But I never quit.
+
+        </p>
+
+
+        <p class="section-description">
+
+          Over that first year, from 2021 to 2022, I improved
+          far more than I had imagined. More importantly,
+          that first year made me realise how much I genuinely
+          enjoyed playing guitar.
+
+        </p>
+
+
+        <div class="beginning-stats">
+
+          <div class="stat">
+
+            <strong>
+              2021
+            </strong>
+
+            <span>
+              Started Learning
+            </span>
+
+          </div>
+
+
+          <div class="stat">
+
+            <strong>
+              1 Year
+            </strong>
+
+            <span>
+              Classes & Growth
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 03
+         THE GAP
+         ===================================================== -->
+
+    <section class="gap-section">
+
+
+      <div class="gap-top scroll-reveal">
+
+        <div class="section-eyebrow">
+          THE GAP
+        </div>
+
+
+        <h2 class="gap-title">
+
+          Learning Wasn't
+          <span>The Hard Part.</span>
+
+          Knowing What To Learn Was.
+
+        </h2>
+
+
+        <p class="gap-description">
+
+          After leaving my classes, I wanted to keep improving.
+          But suddenly, I didn't really know how.
+
+          What should I learn next?
+          How do I improve my technique?
+          What should I practise?
+          Am I even learning the right things?
+
+        </p>
+
+      </div>
+
+
+
+      <div class="confusion-path scroll-reveal">
+
+
+        <div class="path-item">
+          YouTube
+        </div>
+
+
+        <div class="path-arrow">
+          →
+        </div>
+
+
+        <div class="path-item">
+          Tutorials
+        </div>
+
+
+        <div class="path-arrow">
+          →
+        </div>
+
+
+        <div class="path-item">
+          Searching
+        </div>
+
+
+        <div class="path-arrow">
+          →
+        </div>
+
+
+        <div class="path-item">
+          Exploring
+        </div>
+
+
+        <div class="path-arrow">
+          →
+        </div>
+
+
+        <div class="path-item">
+          Confusion
+        </div>
+
+      </div>
+
+
+
+      <p class="gap-bottom scroll-reveal">
+
+        For around 5–6 months, I explored different channels,
+        websites, tutorials and resources trying to figure out
+        how to improve.
+
+        <br><br>
+
+        And eventually, I realised that I wasn't lacking
+        information.
+
+        <strong style="color: var(--gold-light);">
+          I was lacking direction.
+        </strong>
+
+      </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 04
+         REALISATION
+         ===================================================== -->
+
+    <section class="realisation-section">
+
+
+      <div class="realisation-content scroll-reveal">
+
+        <div class="section-eyebrow">
+          THE REALISATION
+        </div>
+
+
+        <h2 class="realisation-quote">
+
+          I Didn't Need
+          <span>More Information.</span>
+
+          <br>
+
+          I Needed The
+          <span>Right Direction.</span>
+
+        </h2>
+
+
+        <p class="realisation-description">
+
+          Those months of searching taught me something
+          important. Getting better at guitar isn't simply
+          about practising more.
+
+          It's about knowing what to learn, when to learn it,
+          how to practise it, and how everything connects.
+
+        </p>
+
+
+        <div class="realisation-line"></div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 05
+         2025 / STRUMVIBES
+         ===================================================== -->
+
+    <section class="strumvibes-section">
+
+
+      <div class="strumvibes-heading scroll-reveal">
+
+        <div class="section-eyebrow">
+          2025 · THE IDEA
+        </div>
+
+
+        <h2 class="section-title">
+
+          So I Built The
+          <span>Path I Wish I Had.</span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+          In 2025, the idea of StrumVibes started taking shape.
+
+          The idea was simple — create a place where beginners
+          and aspiring guitarists don't have to spend months
+          wondering where to start, what to learn next, or how
+          to overcome the point where they've become stuck.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="journey-flow">
+
+
+        <div class="journey-step scroll-reveal">
+
+          <div class="journey-number">
+            01
+          </div>
+
+          <h3>
+            My Journey
+          </h3>
+
+          <p>
+            Started learning guitar and discovered a
+            genuine passion for playing.
+          </p>
+
+        </div>
+
+
+
+        <div class="journey-step scroll-reveal">
+
+          <div class="journey-number">
+            02
+          </div>
+
+          <h3>
+            The Problem
+          </h3>
+
+          <p>
+            Realised how difficult it can be to know
+            what to learn and where to go next.
+          </p>
+
+        </div>
+
+
+
+        <div class="journey-step scroll-reveal">
+
+          <div class="journey-number">
+            03
+          </div>
+
+          <h3>
+            The Idea
+          </h3>
+
+          <p>
+            Create a clearer path for people who
+            genuinely want to learn guitar.
+          </p>
+
+        </div>
+
+
+
+        <div class="journey-step scroll-reveal">
+
+          <div class="journey-number">
+            04
+          </div>
+
+          <h3>
+            StrumVibes
+          </h3>
+
+          <p>
+            Turn that idea into a learning experience
+            built around guidance and progress.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECTION 06
+         PURPOSE
+         ===================================================== -->
+
+    <section class="purpose-section">
+
+
+      <div class="purpose-content scroll-reveal">
+
+        <div class="section-eyebrow">
+          THE PURPOSE
+        </div>
+
+
+        <h2 class="purpose-title">
+
+          No One Should Have To
+          <span>Figure It All Out Alone.</span>
+
+        </h2>
+
+
+        <p class="purpose-description">
+
+          I believe there shouldn't be unnecessary hurdles
+          for someone who genuinely wants to pick up a guitar
+          and enjoy playing.
+
+          <br><br>
+
+          And for someone who is struggling, stuck, or simply
+          doesn't know what to do next, the right guidance
+          can make all the difference.
+
+          <br><br>
+
+          I spent months trying to figure that out myself.
+
+        </p>
+
+
+        <div class="purpose-signature">
+
+          StrumVibes exists so you don't have to.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL CTA
+         ===================================================== -->
+
+    <section class="about-cta scroll-reveal">
+
+
+      <div class="cta-content">
+
+        <div class="section-eyebrow">
+          YOUR JOURNEY
+        </div>
+
+
+        <h2 class="cta-title">
+
+          Your Journey
+          <span>Starts Here.</span>
+
+        </h2>
+
+
+        <p class="cta-description">
+
+          Wherever you are in your guitar journey,
+          you don't have to figure out the next step alone.
+
+        </p>
+
+
+        <a
+          href="courses.html"
+          class="cta-button"
+        >
+
+          Explore Courses
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER DETAIL
+         ===================================================== -->
+
+    <div class="bottom-detail"></div>
+
+
+    <footer>
+
+      STRUMVIBES · GUITAR CLASSES
+
+    </footer>
+
+
+  </div>
+
+
+
+  <!-- =========================================================
+       SCROLL REVEAL SCRIPT
+
+       SAME:
+       threshold = 0.15
+       duration = 1.8s
+       translateY = 50px
+       easing = cubic-bezier(.2,.8,.2,1)
+       ========================================================= -->
+
+  <script>
+
+    const scrollElements =
+      document.querySelectorAll(".scroll-reveal");
+
+
+    const scrollObserver =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("reveal");
+
+            } else {
+
+              entry.target.classList.remove("reveal");
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.15
+        }
+
+      );
+
+
+    scrollElements.forEach((element) => {
+
+      scrollObserver.observe(element);
+
+    });
+
+  </script>
+
+
+</body>
+</html>
